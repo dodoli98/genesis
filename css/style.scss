@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap');
 $primary-color: #111;
 $padding-size : 0 7rem;
 
 body {
+    font-family: "Noto Sans KR";
+    font-weight: 400;
     background-color: $primary-color;
     color: white;
 }
@@ -82,7 +85,7 @@ body {
         justify-content: space-between;
         align-items: center;
         font-size: 0.8rem;
-        padding: 1.5rem 5rem;
+        padding: 1.5rem 7rem;
         border-bottom: 1px solid #565656;
         box-sizing: border-box;
 
@@ -91,12 +94,15 @@ body {
             flex-direction: row;
 
             li {
+                line-height: 1.5rem;
                 &:not(:last-child) {
-                    margin-right: 1rem;
+                    margin-right: 1.5rem;
                 }
             }
         }
-
+        .info_link {
+            flex-wrap: wrap;
+        }
         .sns_link {
             filter: invert(1);
 
@@ -116,8 +122,29 @@ body {
     }
 
     // footer_servie
+    .footer_services{
+        padding: 1.5rem 7rem;
+        border-bottom: 1px solid #565656;
+        
+    }
+    .footer_services_wrapper {
+        flex-wrap: wrap;
+        width: 70%;
+        display: flex;
+        li {
+            line-height: 1.5rem;
+            &:not(:last-child){
+                margin-right: 1.5rem;
+                
+            }
+        }
+    }
 
+    .footer_copyright{
+        padding: 1.5rem 7rem;
+        font-family: "Geologica", sans-serif;
 
+    }
     .logo {
         display: block;
         height: 4rem;
@@ -155,6 +182,7 @@ body {
         overflow: hidden;
 
         h2 {
+            font-family: "Geologica", sans-serif;
             font-size: 4rem;
             bottom: 5%;
             left: 5%;
@@ -178,6 +206,7 @@ body {
 // model------------------------
 #model {
     margin: 10rem 0;
+    font-family: "Geologica", sans-serif;
 
     #model_title {
         text-align: center;
@@ -188,9 +217,7 @@ body {
             margin-bottom: 0.4rem;
         }
 
-        p {
-            font-size: 0.9rem;
-        }
+       
 
     }
 }
@@ -200,14 +227,17 @@ body {
     padding: $padding-size;
     box-sizing: border-box;
     position: relative;
+
     .model_visible_site {
-    overflow: hidden;
+        overflow: hidden;
 
     }
+
     ul {
         width: 100%;
         display: flex;
-        gap: 1rem; /* 각 박스 간격 */
+        gap: 16px;
+        /* 각 박스 간격 */
         transition: 1s all;
     }
 }
@@ -218,7 +248,7 @@ body {
     padding: 1rem;
     box-sizing: border-box;
     background-color: #27272746;
-    transition: 0.5s all;
+    transition: 0.5s all ease-in-out;
     filter: brightness(80%);
 
     &:hover {
@@ -240,6 +270,8 @@ body {
     }
 
     a {
+    font-family: "Noto Sans KR";
+
         display: block;
         width: 100%;
         text-align: center;
@@ -277,8 +309,42 @@ body {
 
 }
 
+button {
+    background-color: transparent; /* 초기화: 투명 배경 */
+    cursor: pointer; /* 클릭 가능 표시 */
+    outline: none; /* 포커스 시 외곽선 제거 */
+    padding: 0; /* 버튼 기본 패딩 제거 */
+    border: none;
+}
+#pagination_wrapper {
+    margin-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
-
+    .paginationBtn {
+        margin: 0 1rem;
+        width: 10px;
+        img {
+            width: 100%;
+        }
+    }
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .dot {
+            transition: 0.4s all;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ccc; /* 초기화: 경계선 */
+            border-radius: 50%; /* 동그랗게 만들기 */
+        }
+        .active {
+            background-color: #ccc;
+        }
+    }
+}
 
 // intro------------------------
 #intro {

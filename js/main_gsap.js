@@ -109,7 +109,7 @@
             stagger: 0.3, // 0.3초간격으로 이미지가 보임
             scrollTrigger: {
                 trigger: "#spec",
-                start: "top 80%",
+                start: "top 40%",
                 toggleActions: "restart none restart none" // 다시 80% 지점에 도달할 때 애니메이션 재시작
             }
         });

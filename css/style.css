@@ -1,5 +1,8 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap");
 body {
+  font-family: "Noto Sans KR";
+  font-weight: 400;
   background-color: #111;
   color: white;
 }
@@ -68,7 +71,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  padding: 1.5rem 5rem;
+  padding: 1.5rem 7rem;
   border-bottom: 1px solid #565656;
   box-sizing: border-box;
 }
@@ -76,8 +79,14 @@ body {
   display: flex;
   flex-direction: row;
 }
+#footer .footer_info ul li {
+  line-height: 1.5rem;
+}
 #footer .footer_info ul li:not(:last-child) {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
+}
+#footer .footer_info .info_link {
+  flex-wrap: wrap;
 }
 #footer .footer_info .sns_link {
   filter: invert(1);
@@ -88,6 +97,25 @@ body {
 #footer .footer_info .sns_link li a img {
   width: auto;
   height: 40px;
+}
+#footer .footer_services {
+  padding: 1.5rem 7rem;
+  border-bottom: 1px solid #565656;
+}
+#footer .footer_services_wrapper {
+  flex-wrap: wrap;
+  width: 70%;
+  display: flex;
+}
+#footer .footer_services_wrapper li {
+  line-height: 1.5rem;
+}
+#footer .footer_services_wrapper li:not(:last-child) {
+  margin-right: 1.5rem;
+}
+#footer .footer_copyright {
+  padding: 1.5rem 7rem;
+  font-family: "Geologica", sans-serif;
 }
 #footer .logo {
   display: block;
@@ -121,6 +149,7 @@ body {
   overflow: hidden;
 }
 #banner #banner_slide h2 {
+  font-family: "Geologica", sans-serif;
   font-size: 4rem;
   bottom: 5%;
   left: 5%;
@@ -138,6 +167,7 @@ body {
 
 #model {
   margin: 10rem 0;
+  font-family: "Geologica", sans-serif;
 }
 #model #model_title {
   text-align: center;
@@ -146,9 +176,6 @@ body {
 #model #model_title h2 {
   font-size: 2rem;
   margin-bottom: 0.4rem;
-}
-#model #model_title p {
-  font-size: 0.9rem;
 }
 
 #model_box_wrapper {
@@ -163,7 +190,8 @@ body {
 #model_box_wrapper ul {
   width: 100%;
   display: flex;
-  gap: 1rem; /* 각 박스 간격 */
+  gap: 16px;
+  /* 각 박스 간격 */
   transition: 1s all;
 }
 
@@ -173,7 +201,7 @@ body {
   padding: 1rem;
   box-sizing: border-box;
   background-color: rgba(39, 39, 39, 0.2745098039);
-  transition: 0.5s all;
+  transition: 0.5s all ease-in-out;
   filter: brightness(80%);
 }
 .model_box:hover {
@@ -191,6 +219,7 @@ body {
   width: 100%;
 }
 .model_box a {
+  font-family: "Noto Sans KR";
   display: block;
   width: 100%;
   text-align: center;
@@ -220,6 +249,43 @@ body {
 .model_box a:hover::after {
   width: 100%;
   /* 가상 요소의 너비를 100%로 확장 */
+}
+
+button {
+  background-color: transparent; /* 초기화: 투명 배경 */
+  cursor: pointer; /* 클릭 가능 표시 */
+  outline: none; /* 포커스 시 외곽선 제거 */
+  padding: 0; /* 버튼 기본 패딩 제거 */
+  border: none;
+}
+
+#pagination_wrapper {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#pagination_wrapper .paginationBtn {
+  margin: 0 1rem;
+  width: 10px;
+}
+#pagination_wrapper .paginationBtn img {
+  width: 100%;
+}
+#pagination_wrapper .pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pagination_wrapper .pagination .dot {
+  transition: 0.4s all;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc; /* 초기화: 경계선 */
+  border-radius: 50%; /* 동그랗게 만들기 */
+}
+#pagination_wrapper .pagination .active {
+  background-color: #ccc;
 }
 
 #intro {
