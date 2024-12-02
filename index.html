@@ -16,7 +16,7 @@
 <body>
     <header id="header">
         <h1 class="logo">
-            <a href="#home">
+            <a href="#main">
                 <img src="images/logo.png" alt="메인로고 입니다." />
             </a>
         </h1>
@@ -32,83 +32,32 @@
             <li><a href="#search">검색</a></li>
             <li><a href="#login">로그인</a></li>
         </ul>
+
     </header>
+
+
+
+    <div class="parallax__progress">
+        <ul>
+            <li><a href="#intro">영감</a></li>
+            <li><a href="#car_design">디자인</a></li>
+            <li><a href="#detail">디테일</a></li>
+            <li><a href="#spec">스펙</a></li>
+            <li><a href="#model">모델</a></li>
+        </ul>
+        <progress max="100" value="0"></progress>
+    </div>
 
     <!-- banner -->
     <main id="main">
         <!-- banner -->
         <section id="banner">
-            <div id="banner_slide">
-                <h2>G90 Series</h2>
-                <div class="slide_item"> </div>
-                <div class="slide_item"> </div>
-            </div>
-
+            <video autoplay muted loop playsinline>
+                <source src="./video/genesis.mp4" type="video/mp4" />
+            </video>
         </section>
 
-        <!-- model -->
-        <section id="model">
-            <div id="model_title">
-                <h2>G90 Series</h2>
-            </div>
-
-            <div id="model_box_wrapper">
-                <div class="model_visible_site">
-                    <ul>
-                        <li class="model_box">
-                            <h3>G90 Long Wheel Base</h3>
-                            <div class="model_box_img">
-                                <img src="./images/car/g90Longwheelbase.png" />
-                            </div>
-                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
-                        </li>
-                        <li class="model_box">
-                            <h3>G90 Long Wheel Base</h3>
-                            <div class="model_box_img">
-                                <img src="./images/car/g90Longwheelbase.png" />
-                            </div>
-                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
-                        </li>
-                        <li class="model_box">
-                            <h3>G90 Long Wheel Base</h3>
-                            <div class="model_box_img">
-                                <img src="./images/car/g90Longwheelbase.png" />
-                            </div>
-                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
-                        </li>
-                        <li class="model_box">
-                            <h3>G90 Long Wheel Base</h3>
-                            <div class="model_box_img">
-                                <img src="./images/car/g90Longwheelbase.png" />
-                            </div>
-                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
-                        </li>
-                        <li class="model_box">
-                            <h3>G90 Long Wheel Base</h3>
-                            <div class="model_box_img">
-                                <img src="./images/car/g90Longwheelbase.png" />
-                            </div>
-                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div id="pagination_wrapper">
-                    <button class="paginationBtn" id="prev"><img src="./images/icon/prev.png"
-                            alt="클릭시 이전 모델이 보입니다" /></button>
-
-                    <div class="pagination">
-                    </div>
-
-                    <button class="paginationBtn" id="next"><img src="./images/icon/next.png"
-                            alt="클릭시 다음 모델이 보입니다" /></button>
-
-                </div>
-
-            </div>
-
-
-        </section>
+      
 
         <!-- intro -->
         <section id="intro">
@@ -209,14 +158,14 @@
             <div class="detail_section">
                 <p>
                     디테일 더욱 완벽한 블랙에 가까워지기 위해 <br>
-                     손길이 닿는 모든 곳을 블랙으로 완성했습니다.
+                    손길이 닿는 모든 곳을 블랙으로 완성했습니다.
                 </p>
             </div>
         </section>
 
         <!-- spec -->
         <section id="spec">
-            <h3>스펙</h3>
+            <h3>Car Specifications</h3>
             <div class="spec_item_wrapper">
                 <div class="spec_item"></div>
                 <div class="spec_item"></div>
@@ -227,6 +176,77 @@
                 <br>
                 윤거는 21” 타이어 적용 기준
             </p>
+        </section>
+
+          <!-- model -->
+          <section id="model">
+            <div id="model_title">
+                <h2>Our Series</h2>
+            </div>
+
+            <div id="model_box_wrapper">
+                <div class="model_visible_site">
+                    <ul>
+                        <li class="model_box">
+                            <h3>G90 Black</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/g90black.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                        <li class="model_box">
+                            <h3>G90 Long Wheel Base</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/g90Longwheelbase.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                        <li class="model_box">
+                            <h3>G90</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/g90.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                        <li class="model_box">
+                            <h3>G80</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/g80.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                        <li class="model_box">
+                            <h3>GV80 COUPE BLACK</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/gv80coupeblack.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                        <li class="model_box">
+                            <h3>GV80 COUPE</h3>
+                            <div class="model_box_img">
+                                <img src="./images/car/gv80coupe.png" />
+                            </div>
+                            <a href="#G90LongDetail" class="detail_button">자세히 보기</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="pagination_wrapper">
+                    <button class="paginationBtn" id="prev"><img src="./images/icon/prev.png"
+                            alt="클릭시 이전 모델이 보입니다" /></button>
+
+                    <div class="pagination">
+                    </div>
+
+                    <button class="paginationBtn" id="next"><img src="./images/icon/next.png"
+                            alt="클릭시 다음 모델이 보입니다" /></button>
+
+                </div>
+
+            </div>
+
+
         </section>
 
 
@@ -269,7 +289,7 @@
 
         <section class="footer_copyright">
             <h1 class="logo">
-                <a href="#home">
+                <a href="#main">
                     <img src="images/logo.png" alt="메인로고 입니다." />
                 </a>
             </h1>
@@ -278,8 +298,9 @@
                 <br />
                 All Rights Reserved.
             </p>
-
         </section>
+
+
     </footer>
 
 

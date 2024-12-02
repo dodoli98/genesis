@@ -1,6 +1,9 @@
 
+
 // GSAP 및 ScrollTrigger 등록
 gsap.registerPlugin(ScrollTrigger);
+
+
 
 // intro section --------------------------------------
 
@@ -113,11 +116,6 @@ gsap.to(sections, {
         end: () => "+=" + (detail.offsetWidth - innerWidth),
         pin: true,
         scrub: 1,
-        snap: {
-            snapTo: 1 / (sections.length - 1),
-            inertia: false,
-            duration: { min: 0.1, max: 0.1 }
-        },
         invalidateOnRefresh: true,
         anticipatePin: 1
     }
@@ -134,4 +132,12 @@ gsap.from(".spec_item", {
         start: "top 40%",
         toggleActions: "restart none restart none" // 다시 80% 지점에 도달할 때 애니메이션 재시작
     }
+});
+
+
+// progress --------------------------------------
+gsap.to("progress", {
+    value: 100,
+    ease: "none",
+    scrollTrigger: { scrub: 0.3 }
 });

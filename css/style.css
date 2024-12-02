@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Noto Sans KR";
   font-weight: 400;
@@ -13,6 +17,7 @@ body {
   overflow: hidden;
   height: 60px;
   line-height: 60px;
+  position: relative;
 }
 #header .logo {
   float: left;
@@ -60,6 +65,42 @@ body {
   /* 호버 시 색상 변경 */
 }
 
+.parallax__progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50px;
+  position: sticky;
+  top: 0px; /* 도달했을때 고정시킬 위치 */
+  z-index: 1000;
+  background-color: #111;
+}
+.parallax__progress ul {
+  padding: 0 7rem;
+  display: flex;
+}
+.parallax__progress ul li:not(:last-child) {
+  margin-right: 1.4rem;
+}
+.parallax__progress progress {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border: none;
+  background: transparent;
+}
+.parallax__progress progress::-webkit-progress-bar {
+  background: transparent;
+}
+.parallax__progress progress::-webkit-progress-value {
+  background: linear-gradient(to left, #db38b5, #01b3e3, #25ce7b, #fdc741, #ff6b01, #fc4236);
+  background-attachment: fixed;
+}
+.parallax__progress progress::-moz-progress-bar {
+  background: linear-gradient(to left, #db38b5, #01b3e3, #25ce7b, #fdc741, #ff6b01, #fc4236);
+  background-attachment: fixed;
+}
+
 #footer {
   background-color: #111;
   color: white;
@@ -67,11 +108,12 @@ body {
   font-size: 0.9rem;
 }
 #footer .footer_info {
+  height: 100px;
+  padding: 0 7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  padding: 1.5rem 7rem;
   border-bottom: 1px solid #565656;
   box-sizing: border-box;
 }
@@ -99,8 +141,11 @@ body {
   height: 40px;
 }
 #footer .footer_services {
-  padding: 1.5rem 7rem;
+  height: 100px;
+  padding: 0 7rem;
   border-bottom: 1px solid #565656;
+  display: flex;
+  align-items: center;
 }
 #footer .footer_services_wrapper {
   flex-wrap: wrap;
@@ -144,29 +189,202 @@ body {
   overflow: hidden;
 }
 
-#banner {
-  height: calc(100vh - 60px);
+#banner video {
+  width: 100%;
 }
-#banner #banner_slide {
-  height: 100%;
+
+#pagination_wrapper {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#pagination_wrapper .paginationBtn {
+  margin: 0 1rem;
+  width: 10px;
+}
+#pagination_wrapper .paginationBtn img {
+  width: 100%;
+}
+#pagination_wrapper .pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#pagination_wrapper .pagination .dot {
+  transition: 0.4s all;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #ccc;
+  /* 초기화: 경계선 */
+  border-radius: 50%;
+  /* 동그랗게 만들기 */
+}
+#pagination_wrapper .pagination .active {
+  background-color: #ccc;
+}
+
+#intro {
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-#banner #banner_slide h2 {
-  font-family: "Geologica", sans-serif;
-  font-size: 4rem;
-  bottom: 5%;
-  left: 5%;
+#intro .intro_text .intro_text_item {
+  font-size: 2rem;
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  width: 100%;
+  text-align: center;
+  z-index: 4;
 }
-#banner .slide_item {
-  height: 100%;
-  background-image: url("../images/banner/gv70.jpg");
+
+.intro_img {
+  background-color: #fff;
   background-size: cover;
-  /* 이미지가 배경 크기에 맞게 확대 */
   background-position: center;
-  /* 이미지가 가운데 정렬되도록 */
+  background-image: url("../images/background/background1.jpg");
+}
+
+.parallax_item {
+  height: 70vh;
+  position: relative;
+}
+.parallax_item .parallax_text_wrapper {
+  width: 100%;
+  padding: 0 7rem;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+.parallax_item .parallax_text_wrapper:nth-of-type(even) {
+  text-align: left;
+}
+.parallax_item .parallax_text_wrapper h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.parallax_item .parallax_text_wrapper p {
+  line-height: 1.3rem;
+}
+.parallax_item .parallax_item_imgWrap {
+  background-color: transparent;
+  overflow: hidden;
+  height: 100%;
+}
+.parallax_item .parallax_item_imgWrap .parallax_item_img {
+  width: auto;
+  height: 100%;
   background-repeat: no-repeat;
+  background-size: contain;
+  transform: scale(1);
+  transition: 0.5s all;
+}
+.parallax_item .parallax_item_imgWrap .parallax_item_img:hover {
+  transform: scale(1.04);
+}
+.parallax_item:nth-child(odd) .parallax_text_wrapper {
+  text-align: right;
+  /* 짝수 번째의 텍스트 정렬 */
+}
+.parallax_item:nth-child(even) .parallax_item_imgWrap .parallax_item_img {
+  background-position: right center;
+}
+.parallax_item:nth-child(1) .parallax_item_img {
+  background-image: url("../images/background/front.jpg");
+}
+.parallax_item:nth-child(2) .parallax_item_img {
+  background-image: url("../images/background/side.jpg");
+}
+.parallax_item:nth-child(3) .parallax_item_img {
+  background-image: url("../images/background/back.jpg");
+}
+
+#detail {
+  width: 300%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+#detail .detail_section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background-repeat: no-repeat;
+  /* 반복 방지 */
+  background-size: auto 100%;
+  /* 높이를 70%로 설정, 너비는 자동 조정 */
+}
+#detail .detail_section:nth-child(2) {
+  text-align: right;
+}
+#detail .detail_section p {
+  padding: 0 9rem;
+  line-height: 2rem;
+  font-size: 1.4rem;
+}
+#detail .detail_section:nth-child(1) {
+  background-image: url("../images/background/imagebox1.jpg");
+  background-position: right center;
+}
+#detail .detail_section:nth-child(2) {
+  background-image: url("../images/background/imagebox2.jpg");
+  background-position: left center;
+}
+#detail .detail_section:nth-child(3) {
+  background-image: url("../images/background/imagebox3.png");
+  background-position: right center;
+}
+
+#spec {
+  padding: 0 7rem;
+  box-sizing: border-box;
+  background-color: #fffff3;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#spec h3 {
+  font-family: "Geologica", sans-serif;
+  color: #111;
+  text-align: center;
+  font-size: 1.75rem;
+  padding: 2rem 0;
+}
+#spec p {
+  font-size: 0.9rem;
+  color: #ababab;
+  text-align: center;
+}
+#spec .spec_item_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#spec .spec_item_wrapper .spec_item {
+  height: 40vh;
+  width: 30%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#spec .spec_item_wrapper .spec_item:nth-child(1) {
+  background-image: url("../images/background/info1.png");
+}
+#spec .spec_item_wrapper .spec_item:nth-child(2) {
+  background-image: url("../images/background/info2.png");
+}
+#spec .spec_item_wrapper .spec_item:nth-child(3) {
+  background-image: url("../images/background/info3.png");
 }
 
 #model {
@@ -256,195 +474,15 @@ body {
 }
 
 button {
-  background-color: transparent; /* 초기화: 투명 배경 */
-  cursor: pointer; /* 클릭 가능 표시 */
-  outline: none; /* 포커스 시 외곽선 제거 */
-  padding: 0; /* 버튼 기본 패딩 제거 */
-  border: none;
-}
-
-#pagination_wrapper {
-  margin-top: 1.5rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-#pagination_wrapper .paginationBtn {
-  margin: 0 1rem;
-  width: 10px;
-}
-#pagination_wrapper .paginationBtn img {
-  width: 100%;
-}
-#pagination_wrapper .pagination {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#pagination_wrapper .pagination .dot {
-  transition: 0.4s all;
-  width: 10px;
-  height: 10px;
-  border: 1px solid #ccc; /* 초기화: 경계선 */
-  border-radius: 50%; /* 동그랗게 만들기 */
-}
-#pagination_wrapper .pagination .active {
-  background-color: #ccc;
-}
-
-#intro {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-#intro .intro_text .intro_text_item {
-  font-size: 2rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px;
-  width: 100%;
-  text-align: center;
-  z-index: 4;
-}
-
-.intro_img {
-  background-color: #fff;
-  background-size: cover;
-  background-position: center;
-  background-image: url("../images/background/background1.jpg");
-}
-
-.parallax_item {
-  height: 70vh;
-  position: relative;
-}
-.parallax_item .parallax_text_wrapper {
-  width: 100%;
-  padding: 0 7rem;
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-}
-.parallax_item .parallax_text_wrapper:nth-of-type(even) {
-  text-align: right;
-}
-.parallax_item .parallax_text_wrapper h3 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.parallax_item .parallax_item_imgWrap {
   background-color: transparent;
-  overflow: hidden;
-  height: 100%;
-}
-.parallax_item .parallax_item_imgWrap .parallax_item_img {
-  width: auto;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform: scale(1);
-  transition: 0.5s all;
-}
-.parallax_item .parallax_item_imgWrap .parallax_item_img:hover {
-  transform: scale(1.04);
-}
-.parallax_item:nth-child(even) .parallax_text_wrapper {
-  text-align: right;
-  /* 짝수 번째의 텍스트 정렬 */
-}
-.parallax_item:nth-child(even) .parallax_item_imgWrap .parallax_item_img {
-  background-position: right center;
-}
-.parallax_item:nth-child(1) .parallax_item_img {
-  background-image: url("../images/background/front.jpg");
-}
-.parallax_item:nth-child(2) .parallax_item_img {
-  background-image: url("../images/background/side.jpg");
-}
-.parallax_item:nth-child(3) .parallax_item_img {
-  background-image: url("../images/background/back.jpg");
-}
-
-#detail {
-  width: 300%;
-  display: flex;
-  flex-wrap: nowrap;
-}
-#detail .detail_section {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-#detail .detail_section:nth-child(2) {
-  text-align: right;
-}
-#detail .detail_section p {
-  padding: 0 7rem;
-  line-height: 1.7rem;
-  font-size: 1.4rem;
-}
-#detail .detail_section:nth-child(1) {
-  background-image: url("../images/background/imagebox1.jpg");
-  background-repeat: no-repeat; /* 반복 방지 */
-  background-size: auto 90%; /* 높이를 70%로 설정, 너비는 자동 조정 */
-  background-position: right center;
-}
-#detail .detail_section:nth-child(2) {
-  background-image: url("../images/background/imagebox2.jpg");
-  background-repeat: no-repeat; /* 반복 방지 */
-  background-size: auto 90%; /* 높이를 70%로 설정, 너비는 자동 조정 */
-  background-position: left center;
-}
-
-#spec {
-  padding: 0 7rem;
-  box-sizing: border-box;
-  background-color: #fffff3;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-#spec h3 {
-  color: #111;
-  text-align: center;
-  font-size: 1.75rem;
-  padding: 2rem 0;
-}
-#spec p {
-  font-size: 0.9rem;
-  color: #ababab;
-  text-align: center;
-}
-#spec .spec_item_wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-#spec .spec_item_wrapper .spec_item {
-  height: 40vh;
-  width: 30%;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-#spec .spec_item_wrapper .spec_item:nth-child(1) {
-  background-image: url("../images/background/info1.png");
-}
-#spec .spec_item_wrapper .spec_item:nth-child(2) {
-  background-image: url("../images/background/info2.png");
-}
-#spec .spec_item_wrapper .spec_item:nth-child(3) {
-  background-image: url("../images/background/info3.png");
+  /* 초기화: 투명 배경 */
+  cursor: pointer;
+  /* 클릭 가능 표시 */
+  outline: none;
+  /* 포커스 시 외곽선 제거 */
+  padding: 0;
+  /* 버튼 기본 패딩 제거 */
+  border: none;
 }
 
 @media (min-width: 768px) {

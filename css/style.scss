@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap');
 $primary-color: #111;
 $padding-size : 0 7rem;
-
+html{
+    scroll-behavior: smooth;
+  }
 body {
     font-family: "Noto Sans KR";
     font-weight: 400;
@@ -15,6 +17,7 @@ body {
     overflow: hidden;
     height: 60px;
     line-height: 60px;
+    position: relative;
 
     .logo {
         float: left;
@@ -70,9 +73,49 @@ body {
             }
         }
     }
+
+
 }
 
 
+    .parallax__progress {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 50px;
+        position: sticky;
+        top: 0px; /* 도달했을때 고정시킬 위치 */
+        z-index: 1000;
+        background-color: $primary-color;
+        ul {
+            padding: $padding-size;
+            display: flex;
+    
+            li {
+                &:not(:last-child) {
+                    margin-right: 1.4rem;
+                }
+            }
+        }   
+        progress {
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            border: none;
+            background: transparent;
+        }
+        progress::-webkit-progress-bar {
+            background: transparent;
+        }
+        progress::-webkit-progress-value {
+            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+            background-attachment: fixed;
+        }
+        progress::-moz-progress-bar {
+            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+            background-attachment: fixed;
+        }
+    }
 
 #footer {
     background-color: $primary-color;
@@ -83,11 +126,12 @@ body {
 
     // info section
     .footer_info {
+        height: 100px;
+        padding: $padding-size;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 0.8rem;
-        padding: 1.5rem 7rem;
         border-bottom: 1px solid #565656;
         box-sizing: border-box;
 
@@ -97,14 +141,17 @@ body {
 
             li {
                 line-height: 1.5rem;
+
                 &:not(:last-child) {
                     margin-right: 1.5rem;
                 }
             }
         }
+
         .info_link {
             flex-wrap: wrap;
         }
+
         .sns_link {
             filter: invert(1);
 
@@ -124,29 +171,35 @@ body {
     }
 
     // footer_servie
-    .footer_services{
-        padding: 1.5rem 7rem;
+    .footer_services {
+        height: 100px;
+        padding: $padding-size;
         border-bottom: 1px solid #565656;
-        
+        display: flex;
+        align-items: center;
     }
+
     .footer_services_wrapper {
         flex-wrap: wrap;
         width: 70%;
         display: flex;
+
         li {
             line-height: 1.5rem;
-            &:not(:last-child){
+
+            &:not(:last-child) {
                 margin-right: 1.5rem;
-                
+
             }
         }
     }
 
-    .footer_copyright{
+    .footer_copyright {
         padding: 1.5rem 7rem;
         font-family: "Geologica", sans-serif;
 
     }
+
     .logo {
         display: block;
         height: 4rem;
@@ -181,148 +234,11 @@ body {
 
 // banner------------------------
 #banner {
-    height: calc(100vh - 60px);
-
-    #banner_slide {
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-
-        h2 {
-            font-family: "Geologica", sans-serif;
-            font-size: 4rem;
-            bottom: 5%;
-            left: 5%;
-            position: absolute;
-
-        }
-    }
-
-    .slide_item {
-        height: 100%;
-        background-image: url("../images/banner/gv70.jpg");
-        background-size: cover;
-        /* 이미지가 배경 크기에 맞게 확대 */
-        background-position: center;
-        /* 이미지가 가운데 정렬되도록 */
-        background-repeat: no-repeat;
-
-    }
-}
-
-// model------------------------
-#model {
-    margin: 10rem 0;
-    font-family: "Geologica", sans-serif;
-
-    #model_title {
-        text-align: center;
-        margin-bottom: 3rem;
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 0.4rem;
-        }
-
-       
-
-    }
-}
-
-#model_box_wrapper {
-    overflow: hidden;
-    padding: $padding-size;
-    box-sizing: border-box;
-    position: relative;
-
-    .model_visible_site {
-        overflow: hidden;
-
-    }
-
-    ul {
+    video {
         width: 100%;
-        display: flex;
-        gap: 16px;
-        /* 각 박스 간격 */
-        transition: 1s all;
     }
 }
 
-.model_box {
-    flex-shrink: 0;
-    width: calc((100% - 2rem) / 3);
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: #27272746;
-    transition: 0.5s all ease-in-out;
-    filter: brightness(80%);
-
-    &:hover {
-        filter: brightness(100%);
-    }
-
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    .model_box_img {
-        width: 100%;
-        margin-top: 4rem;
-        margin-bottom: 1.4rem;
-
-        img {
-            width: 100%;
-        }
-    }
-
-    a {
-    font-family: "Noto Sans KR";
-
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 0.6rem 0;
-        text-decoration: none;
-        cursor: pointer;
-
-        border: 1px solid #ccc;
-        transition: 0.5s all;
-        position: relative;
-
-        &::after {
-            content: "";
-            width: 0%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: white;
-            transition: width 0.5s ease;
-            z-index: -1;
-        }
-
-        &:hover {
-            color: $primary-color;
-            letter-spacing: 1px;
-            /* 텍스트 간격 변경 */
-        }
-
-        &:hover::after {
-            width: 100%;
-            /* 가상 요소의 너비를 100%로 확장 */
-        }
-    }
-
-}
-
-button {
-    background-color: transparent; /* 초기화: 투명 배경 */
-    cursor: pointer; /* 클릭 가능 표시 */
-    outline: none; /* 포커스 시 외곽선 제거 */
-    padding: 0; /* 버튼 기본 패딩 제거 */
-    border: none;
-}
 #pagination_wrapper {
     margin-top: 1.5rem;
     width: 100%;
@@ -332,21 +248,27 @@ button {
     .paginationBtn {
         margin: 0 1rem;
         width: 10px;
+
         img {
             width: 100%;
         }
     }
+
     .pagination {
         display: flex;
         align-items: center;
         gap: 10px;
+
         .dot {
             transition: 0.4s all;
             width: 10px;
             height: 10px;
-            border: 1px solid #ccc; /* 초기화: 경계선 */
-            border-radius: 50%; /* 동그랗게 만들기 */
+            border: 1px solid #ccc;
+            /* 초기화: 경계선 */
+            border-radius: 50%;
+            /* 동그랗게 만들기 */
         }
+
         .active {
             background-color: #ccc;
         }
@@ -402,12 +324,15 @@ button {
         z-index: 5;
 
         &:nth-of-type(even) {
-            text-align: right;
+            text-align: left;
         }
 
         h3 {
             font-size: 3rem;
             margin-bottom: 1rem;
+        }
+        p{
+            line-height: 1.3rem;
         }
 
     }
@@ -433,18 +358,23 @@ button {
 
     }
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
         .parallax_text_wrapper {
             text-align: right;
             /* 짝수 번째의 텍스트 정렬 */
         }
 
-        .parallax_item_imgWrap {
-            .parallax_item_img {
-                background-position: right center;
-            }
+    }
+    &:nth-child(even) {
+    .parallax_item_imgWrap {
+        .parallax_item_img {
+            background-position: right center;
         }
     }
+
+    }
+
+
 
     &:nth-child(1) .parallax_item_img {
         background-image: url("../images/background/front.jpg");
@@ -464,6 +394,7 @@ button {
     width: 300%;
     display: flex;
     flex-wrap: nowrap;
+
     .detail_section {
         width: 100%;
         height: 100vh;
@@ -471,28 +402,35 @@ button {
         flex-direction: column;
         justify-content: center;
         position: relative;
-       
+        background-repeat: no-repeat;
+        /* 반복 방지 */
+        background-size: auto 100%;
+
+        /* 높이를 70%로 설정, 너비는 자동 조정 */
         &:nth-child(2) {
-        text-align: right;
+            text-align: right;
         }
-        p{
-            padding: $padding-size;
-            line-height: 1.7rem;
+
+        p {
+            padding: 0 9rem;
+            line-height: 2rem;
             font-size: 1.4rem;
 
         }
 
         &:nth-child(1) {
-        background-image: url("../images/background/imagebox1.jpg");
-        background-repeat: no-repeat; /* 반복 방지 */
-        background-size: auto 90%; /* 높이를 70%로 설정, 너비는 자동 조정 */
-        background-position: right center;
+            background-image: url("../images/background/imagebox1.jpg");
+            background-position: right center;
         }
+
         &:nth-child(2) {
-        background-image: url("../images/background/imagebox2.jpg");
-        background-repeat: no-repeat; /* 반복 방지 */
-        background-size: auto 90%; /* 높이를 70%로 설정, 너비는 자동 조정 */
-        background-position: left center;
+            background-image: url("../images/background/imagebox2.jpg");
+            background-position: left center;
+        }
+
+        &:nth-child(3) {
+            background-image: url("../images/background/imagebox3.png");
+            background-position: right center;
         }
     }
 }
@@ -509,6 +447,7 @@ button {
     justify-content: center;
 
     h3 {
+    font-family: "Geologica", sans-serif;
         color: $primary-color;
         text-align: center;
         font-size: 1.75rem;
@@ -520,6 +459,7 @@ button {
         color: #ababab;
         text-align: center;
     }
+
     .spec_item_wrapper {
         width: 100%;
         display: flex;
@@ -548,6 +488,123 @@ button {
 }
 
 
+// model------------------------
+#model {
+    margin: 10rem 0;
+    font-family: "Geologica", sans-serif;
+
+    #model_title {
+        text-align: center;
+        margin-bottom: 3rem;
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.4rem;
+        }
+
+
+
+    }
+}
+
+#model_box_wrapper {
+    overflow: hidden;
+    padding: $padding-size;
+    box-sizing: border-box;
+    position: relative;
+
+    .model_visible_site {
+        overflow: hidden;
+
+    }
+
+    ul {
+        width: 100%;
+        display: flex;
+        gap: 16px;
+        /* 각 박스 간격 */
+        transition: 1s all;
+    }
+}
+
+.model_box {
+    flex-shrink: 0;
+    width: calc((100% - 2rem) / 3);
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: #27272746;
+    transition: 0.5s all ease-in-out;
+    filter: brightness(80%);
+
+    &:hover {
+        filter: brightness(100%);
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .model_box_img {
+        width: 100%;
+        margin-top: 4rem;
+        margin-bottom: 1.4rem;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    a {
+        font-family: "Noto Sans KR";
+
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.6rem 0;
+        text-decoration: none;
+        cursor: pointer;
+
+        border: 1px solid #ccc;
+        transition: 0.5s all;
+        position: relative;
+
+        &::after {
+            content: "";
+            width: 0%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.5s ease;
+            z-index: -1;
+        }
+
+        &:hover {
+            color: $primary-color;
+            letter-spacing: 1px;
+            /* 텍스트 간격 변경 */
+        }
+
+        &:hover::after {
+            width: 100%;
+            /* 가상 요소의 너비를 100%로 확장 */
+        }
+    }
+
+}
+
+button {
+    background-color: transparent;
+    /* 초기화: 투명 배경 */
+    cursor: pointer;
+    /* 클릭 가능 표시 */
+    outline: none;
+    /* 포커스 시 외곽선 제거 */
+    padding: 0;
+    /* 버튼 기본 패딩 제거 */
+    border: none;
+}
 @media (min-width: 768px) {
     #banner {
         max-height: 60vw;
