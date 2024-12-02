@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap");
+/* Clearfix Mixin */
 html {
   scroll-behavior: smooth;
 }
@@ -12,75 +13,89 @@ body {
 }
 
 #header {
-  padding: 0 7rem;
+  position: fixed; /* 고정 위치 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 프로그래스바보다 높은 값 */
+  transition: transform 0.2s ease; /* 애니메이션 부드럽게 */
+  background-color: #111;
   box-sizing: border-box;
   overflow: hidden;
+}
+#header .nav_wrapper {
+  padding: 0 7rem;
   height: 60px;
   line-height: 60px;
-  position: relative;
+  /* Clearfix 적용 */
 }
-#header .logo {
+#header .nav_wrapper::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#header .nav_wrapper .logo {
   float: left;
   height: 4rem;
 }
-#header .logo a {
+#header .nav_wrapper .logo a {
   display: block;
   width: 100%;
 }
-#header .logo a img {
+#header .nav_wrapper .logo a img {
   width: 8.4rem;
   vertical-align: middle;
 }
-#header ul {
+#header .nav_wrapper ul {
   height: 100%;
-  /* float 클리어 */
-  /* 첫 번째 ul: 왼쪽 정렬 */
   /* 두 번째 ul: 오른쪽 정렬 */
 }
-#header ul:first-of-type {
+#header .nav_wrapper ul:first-of-type {
   float: left;
   margin-left: 2rem;
-  /* h1과의 간격 */
 }
-#header ul:last-of-type {
+#header .nav_wrapper ul:last-of-type {
   float: right;
 }
-#header ul li {
+#header .nav_wrapper ul li {
   float: left;
-  /* li도 왼쪽으로 정렬 */
   margin-right: 2rem;
-  /* li 간격 */
 }
-#header ul li:last-child {
+#header .nav_wrapper ul li:last-child {
   margin-right: 0;
-  /* 마지막 li는 간격 제거 */
 }
-#header ul li a {
+#header .nav_wrapper ul li a {
   color: white;
   text-decoration: none;
   transition: color 0.3s;
 }
-#header ul li a:hover {
-  color: #ccc;
-  /* 호버 시 색상 변경 */
+#header .nav_wrapper ul li a:hover {
+  color: rgba(165, 165, 165, 0.5058823529);
 }
 
 .parallax__progress {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 50px;
-  position: sticky;
-  top: 0px; /* 도달했을때 고정시킬 위치 */
-  z-index: 1000;
+  box-sizing: border-box;
   background-color: #111;
 }
 .parallax__progress ul {
-  padding: 0 7rem;
   display: flex;
+  padding: 0 7rem;
 }
 .parallax__progress ul li:not(:last-child) {
   margin-right: 1.4rem;
+}
+.parallax__progress ul a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.parallax__progress ul a:hover {
+  color: rgba(165, 165, 165, 0.5058823529);
 }
 .parallax__progress progress {
   appearance: none;
@@ -187,6 +202,7 @@ body {
 
 #main {
   overflow: hidden;
+  margin-top: 60px;
 }
 
 #banner video {

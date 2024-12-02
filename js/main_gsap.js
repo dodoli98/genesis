@@ -141,3 +141,22 @@ gsap.to("progress", {
     ease: "none",
     scrollTrigger: { scrub: 0.3 }
 });
+
+
+//nav --------------------------------------
+// GSAP 애니메이션 정의
+const showNav = gsap.from("#header", {
+    yPercent: -55, // 헤더 전체를 위로 숨김
+    paused: true,
+    duration: 0.2,
+}).progress(1);
+
+// ScrollTrigger 설정
+ScrollTrigger.create({
+    start: "top top", // 트리거 시작 지점
+    end: 99999, // 끝나는 지점
+    onUpdate: (self) => {
+        // 스크롤 방향에 따라 애니메이션 실행
+        self.direction === -1 ? showNav.play() : showNav.reverse();
+    },
+});

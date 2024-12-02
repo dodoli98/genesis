@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Licorice&family=Noto+Sans+KR:wght@100..900&display=swap');
 $primary-color: #111;
 $padding-size : 0 7rem;
-html{
-    scroll-behavior: smooth;
+/* Clearfix Mixin */
+@mixin clearfix {
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   }
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Noto Sans KR";
     font-weight: 400;
@@ -12,111 +21,134 @@ body {
 }
 
 #header {
-    padding: $padding-size;
+    position: fixed; /* 고정 위치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* 프로그래스바보다 높은 값 */
+    transition: transform 0.2s ease; /* 애니메이션 부드럽게 */
+
+    background-color: $primary-color;
     box-sizing: border-box;
     overflow: hidden;
-    height: 60px;
+
+    .nav_wrapper {
+    padding: $padding-size;
+
+        height: 60px;
     line-height: 60px;
-    position: relative;
 
-    .logo {
-        float: left;
-        height: 4rem;
-
-        a {
-            display: block;
-            width: 100%;
-
-            img {
-                width: 8.4rem;
-                vertical-align: middle;
-            }
-        }
-    }
-
-    ul {
-        height: 100%;
-
-        /* float 클리어 */
-        /* 첫 번째 ul: 왼쪽 정렬 */
-        &:first-of-type {
+         /* Clearfix 적용 */
+    @include clearfix;
+        .logo {
             float: left;
-            margin-left: 2rem;
-            /* h1과의 간격 */
-        }
-
-        /* 두 번째 ul: 오른쪽 정렬 */
-        &:last-of-type {
-            float: right;
-        }
-
-        li {
-            float: left;
-            /* li도 왼쪽으로 정렬 */
-            margin-right: 2rem;
-            /* li 간격 */
-
-            &:last-child {
-                margin-right: 0;
-                /* 마지막 li는 간격 제거 */
-            }
+            height: 4rem;
 
             a {
-                color: white;
-                text-decoration: none;
-                transition: color 0.3s;
+                display: block;
+                width: 100%;
 
-                &:hover {
-                    color: #ccc;
-                    /* 호버 시 색상 변경 */
+                img {
+                    width: 8.4rem;
+                    vertical-align: middle;
                 }
             }
         }
-    }
+        ul {
+            height: 100%;
 
+            &:first-of-type {
+                float: left;
+                margin-left: 2rem;
+            }
+
+            /* 두 번째 ul: 오른쪽 정렬 */
+            &:last-of-type {
+                float: right;
+            }
+
+            li {
+                float: left;
+                margin-right: 2rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: #a5a5a581;
+                    }
+                }
+            }
+        }
+
+
+    }
 
 }
 
 
-    .parallax__progress {
+.parallax__progress {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50px;
+    box-sizing: border-box;
+    background-color: $primary-color;
+
+    ul {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 50px;
-        position: sticky;
-        top: 0px; /* 도달했을때 고정시킬 위치 */
-        z-index: 1000;
-        background-color: $primary-color;
-        ul {
-            padding: $padding-size;
-            display: flex;
-    
-            li {
-                &:not(:last-child) {
-                    margin-right: 1.4rem;
-                }
+        padding: $padding-size;
+
+        li {
+            &:not(:last-child) {
+                margin-right: 1.4rem;
             }
-        }   
-        progress {
-            appearance: none;
-            width: 100%;
-            height: 5px;
-            border: none;
-            background: transparent;
         }
-        progress::-webkit-progress-bar {
-            background: transparent;
-        }
-        progress::-webkit-progress-value {
-            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
-            background-attachment: fixed;
-        }
-        progress::-moz-progress-bar {
-            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
-            background-attachment: fixed;
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+                color: #a5a5a581;
+            }
         }
     }
 
+    progress {
+        appearance: none;
+        width: 100%;
+        height: 5px;
+        border: none;
+        background: transparent;
+    }
+
+    progress::-webkit-progress-bar {
+        background: transparent;
+    }
+
+    progress::-webkit-progress-value {
+        background: linear-gradient(to left, #db38b5, #01b3e3, #25ce7b, #fdc741, #ff6b01, #fc4236);
+        background-attachment: fixed;
+    }
+
+    progress::-moz-progress-bar {
+        background: linear-gradient(to left, #db38b5, #01b3e3, #25ce7b, #fdc741, #ff6b01, #fc4236);
+        background-attachment: fixed;
+    }
+}
+
+
+
+// footer =====================================
 #footer {
     background-color: $primary-color;
     color: white;
@@ -230,6 +262,7 @@ body {
 
 #main {
     overflow: hidden;
+    margin-top: 60px;
 }
 
 // banner------------------------
@@ -331,7 +364,8 @@ body {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        p{
+
+        p {
             line-height: 1.3rem;
         }
 
@@ -365,12 +399,13 @@ body {
         }
 
     }
+
     &:nth-child(even) {
-    .parallax_item_imgWrap {
-        .parallax_item_img {
-            background-position: right center;
+        .parallax_item_imgWrap {
+            .parallax_item_img {
+                background-position: right center;
+            }
         }
-    }
 
     }
 
@@ -390,6 +425,7 @@ body {
 }
 
 
+// detail------------------------
 #detail {
     width: 300%;
     display: flex;
@@ -447,7 +483,7 @@ body {
     justify-content: center;
 
     h3 {
-    font-family: "Geologica", sans-serif;
+        font-family: "Geologica", sans-serif;
         color: $primary-color;
         text-align: center;
         font-size: 1.75rem;
@@ -605,6 +641,7 @@ button {
     /* 버튼 기본 패딩 제거 */
     border: none;
 }
+
 @media (min-width: 768px) {
     #banner {
         max-height: 60vw;
